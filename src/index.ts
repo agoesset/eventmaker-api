@@ -4,7 +4,25 @@ import { Hono } from 'hono'
 const app = new Hono()
 
 app.get('/', (c) => {
-  return c.json({ message: 'Hello, World!' })
+  return c.json({ message: 'Hello Hono!' })
+})
+
+app.get('/events', (c) => {
+  return c.json({ 
+    events: [
+      { id: 1, name: 'Fullstack JS Menggunakan TanStack Start' },
+      { id: 2, name: 'Deployment Menggunakan Cloudflare Pages' }
+    ] 
+  })
+})
+
+app.get('/participants', (c) => {
+  return c.json({ 
+    participants: [
+      { id: 1, name: 'Budi' },
+      { id: 2, name: 'Ahmad' }
+    ] 
+  })
 })
 
 serve({
