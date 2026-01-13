@@ -5,6 +5,12 @@ import { participantsRoute } from './router/participants.js';
 
 const app = new Hono()
 
+app.get('/', (c) => {
+  return c.json({ 
+    events: 'https://eventmaker-api.lowcode.my.id/events',
+    participants: 'https://eventmaker-api.lowcode.my.id/participants'
+   });
+});
 app.route('/events', eventRoute);
 app.route('/participants', participantsRoute);
 
