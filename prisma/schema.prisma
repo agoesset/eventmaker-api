@@ -13,19 +13,19 @@ datasource db {
   provider = "sqlite"
 }
 
-model Events {
-  id          String   @id @default(cuid())
-  title       String
-  description String?
-  date        DateTime
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Event {
+  id            String @id @default(cuid())
+  name          String
+  description   String
+  location      String
+  dateTime      String
+  participants  Participant[]
 }
 
-model Participants {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Participant {
+  id            String @id @default(cuid())
+  name          String
+  email         String
+  eventId       String
+  event         Event  @relation(fields: [eventId], references: [id])
 }
